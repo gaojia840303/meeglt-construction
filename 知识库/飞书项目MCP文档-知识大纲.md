@@ -1,7 +1,7 @@
 # 飞书项目 MCP 文档 - 知识大纲
 
-> 本大纲基于原始飞书云文档「飞书项目 MCP 上新：让 AI 成为你的项目助理」（https://bytedance.larkoffice.com/docx/WR2edlyg0oma39xVkSKcbgCBn3g ，6月25日修改）以及飞书项目帮助中心、Aily 帮助中心等相关官方文档整合而成。
-> 由于飞书云文档存在动态加载限制，原始文档仅能完整抓取到「一、MCP 是什么」章节，「二、如何开启你的飞书项目 MCP 之旅？」及之后章节的内容通过飞书项目帮助中心官方文档（project.feishu.cn/b/helpcenter/）补充完整。
+> 本大纲基于原始飞书云文档「飞书项目 MCP 上新：让 AI 成为你的项目助理」（https://bytedance.larkoffice.com/docx/WR2edlyg0oma39xVkSKcbgCBn3g ，最近修改时间：2026年8月24日）以及飞书项目帮助中心、Aily 帮助中心等相关官方文档整合而成。
+> 由于飞书云文档存在动态加载限制，原始文档仅能完整抓取到首屏内容（含"一、MCP 是什么"章节及"二、如何开启你的飞书项目 MCP 之旅？"的引导段）。后续章节的具体内容通过飞书项目帮助中心官方文档（project.feishu.cn/b/helpcenter/）补充完整。
 
 ---
 
@@ -91,7 +91,7 @@
 
 ## 二、如何开启你的飞书项目 MCP 之旅？
 
-> ⚠️ 说明：原始飞书云文档的此章节内容因动态加载限制未能完整抓取。以下内容综合自飞书项目帮助中心官方文档（https://project.feishu.cn/b/helpcenter/1ykiuvvj/wzb3ycsc）。
+> ⚠️ 说明：原始飞书云文档的此章节内容因动态加载限制未能完整抓取。以下内容综合自飞书项目帮助中心官方文档（https://project.feishu.cn/b/helpcenter/1ykiuvvj/wzb3ycsc）及原始云文档首屏引导段（2026年8月24日修改版本）。
 
 ### 1. 前提条件
 - **在飞书项目中启用 MCP，并完成授权**
@@ -100,6 +100,18 @@
   - **X-Mcp-Token**：用于 HTTP Header 连接方式
   - **MCP_USER_TOKEN**：用于 Stdio 连接方式
   - **domain**：MCP Server 的域名，用于拼接 `{domain}/mcp_server/v1`
+
+### 1.1 按用户类型区分的开启路径（来自云文档首屏引导，2026-08-24 修改版本）
+
+原始云文档在"二、如何开启你的飞书项目 MCP 之旅？"章节首屏按用户类型区分了开启路径：
+
+**A. Aily 用户（推荐）**
+- 路径：进入 Aily 智能体 → 在工具/插件管理中，搜索并添加"飞书项目 MCP"
+- 优势：作为飞书内置工具，Aily 会自动完成身份认证，无需任何手动配置，体验最为流畅
+
+**B. 第三方 AI 工具用户（如 Claude、Trae、Cursor 等）**
+- 核心要素：你需要一个个人 Token 作为连接凭证
+- Token 生成路径：前往你的「飞书项目」→ 右上角头像 → **MCP设置** → **个人 Token**，在这里生成一个新的 Token 并妥善保管
 
 ### 2. 三种连接方式
 
@@ -722,7 +734,7 @@ httpUrl = "{domain}/mcp_server/v1"
 这些内容已通过飞书项目帮助中心的官方文档（project.feishu.cn/b/helpcenter/）进行了等价补充，信息来源权威可信，但与原始云文档的叙述结构可能存在差异。
 
 ### 补充说明
-- 原始飞书云文档的修改时间为 **6月25日**
+- 原始飞书云文档的修改时间为 **2026年8月24日**（较前一版本"6月25日"有更新，新增了"二、如何开启你的飞书项目 MCP 之旅？"首屏按用户类型区分的引导段，明确了 Aily 用户和第三方 AI 工具用户的开启路径）
 - 飞书项目 MCP 已提供 **49 个工具**（7 大分类），并仍在持续扩展
 - 飞书项目首次取消了"要想使用开放能力，必须由管理员先安装"的限制，节点负责人可以直接把自己负责的节点转化为 AI 节点
 
@@ -769,3 +781,4 @@ httpUrl = "{domain}/mcp_server/v1"
 
 - [2026-07-26] 初始生成，基于飞书云文档+帮助中心三份补充文档整合
 - [2026-07-27] 工具名称校正：修正 `transition_node`（原误标为 `get_node_detail`）、`transition_state`（原误标为 `update_state`）；补充缺失的14个工具API名称（`list_node_field_config`、`get_transition_required`、`get_view_detail`、`list_charts`、`get_chart_detail`、`create_fixed_view`、`update_fixed_view`、`list_multi_project_view_workitems`、`list_workitem_comments`、`upload_file`、`get_download_url`、`list_element_template`）；工具总数从"40+"更新为确切数字49个
+- [2026-08-31] MCP云文档修改时间更新：从"6月25日"更新为"2026年8月24日"；新增"二、如何开启你的飞书项目 MCP 之旅？"首屏按用户类型区分的开启路径（Aily用户推荐路径、第三方AI工具用户的Token生成路径：飞书项目→右上角头像→MCP设置→个人Token）；MCP工具数49个、AI工具11种、配置方式3种均无变化
