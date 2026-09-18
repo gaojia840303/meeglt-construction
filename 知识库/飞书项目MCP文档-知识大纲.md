@@ -107,11 +107,11 @@
 
 **A. Aily 用户（推荐）**
 - 路径：进入 Aily 智能体 → 在工具/插件管理中，搜索并添加"飞书项目 MCP"
-- 优势：作为飞书内置工具，Aily 会自动完成身份认证，无需任何手动配置，体验最为流畅
+- 通过内置入口接入，并按页面提示完成启用与授权；是否需要补充配置，以当前客户端提示为准。
 
 **B. 第三方 AI 工具用户（如 Claude、Trae、Cursor 等）**
-- 核心要素：你需要一个个人 Token 作为连接凭证
-- Token 生成路径：前往你的「飞书项目」→ 右上角头像 → **MCP设置** → **个人 Token**，在这里生成一个新的 Token 并妥善保管
+- 按连接方式准备凭证：支持 HTTP OAuth 的客户端通过浏览器完成授权；HTTP Header / Stdio 方式需要配置对应的个人 Token，详见下方「三种连接方式」。
+- 个人 Token 入口（2026-08-24 文档记录）：飞书项目 → 右上角头像 → **MCP设置** → **个人 Token**。仅在所选连接方式需要 Token 时使用；当前入口以客户端实际界面为准。
 
 ### 2. 三种连接方式
 
@@ -782,3 +782,4 @@ httpUrl = "{domain}/mcp_server/v1"
 - [2026-07-26] 初始生成，基于飞书云文档+帮助中心三份补充文档整合
 - [2026-07-27] 工具名称校正：修正 `transition_node`（原误标为 `get_node_detail`）、`transition_state`（原误标为 `update_state`）；补充缺失的14个工具API名称（`list_node_field_config`、`get_transition_required`、`get_view_detail`、`list_charts`、`get_chart_detail`、`create_fixed_view`、`update_fixed_view`、`list_multi_project_view_workitems`、`list_workitem_comments`、`upload_file`、`get_download_url`、`list_element_template`）；工具总数从"40+"更新为确切数字49个
 - [2026-08-31] MCP云文档修改时间更新：从"6月25日"更新为"2026年8月24日"；新增"二、如何开启你的飞书项目 MCP 之旅？"首屏按用户类型区分的开启路径（Aily用户推荐路径、第三方AI工具用户的Token生成路径：飞书项目→右上角头像→MCP设置→个人Token）；MCP工具数49个、AI工具11种、配置方式3种均无变化
+- [2026-09-18] 修正文档内部的授权口径：第三方客户端按 OAuth / Header / Stdio 区分授权与 Token 配置；Aily 按页面提示完成授权。此次为一致性修订，未重新核验官方产品入口或工具数量。
