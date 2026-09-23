@@ -14,3 +14,6 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+
+# 工具本地缓存
+.user_info/
