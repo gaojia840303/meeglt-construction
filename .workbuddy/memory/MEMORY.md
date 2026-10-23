@@ -49,6 +49,14 @@
 - 关键命令：project search / workitem meta-types / workitem meta-roles / workitem meta-fields / view get / workitem get --fields '["_all"]' / workitem update --params
 - 视图 URL 解析：https://project.feishu.cn/{simple_name}/workObjectView/{work_item_type_api_name}/{view_id}；simple_name 需先 `project search` 换成 projectKey
 
+## lark-cli 通用 API 调用与妙记获取（已验证，2026-10-20）
+- **Git Bash 下 `lark-cli api GET /open-apis/...` 路径被 MSYS 转成本地路径导致 404**：必须 `export MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*"` 前置；用 `--dry-run` 可看到被改坏的 URL 排查
+- 妙记元信息：`lark-cli minutes minutes get --params '{"minute_token":"xxx"}'`
+- 妙记转写正文：`lark-cli api GET /open-apis/minutes/v1/minutes/{token}/transcript --params '{"need_speaker":true,"need_timestamp":false,"file_format":"txt"}' -o out.txt`（需 scope `minutes:minutes.transcript:export`）
+- **2091005 = 单篇妙记没给「导出」权限**（owner≠自己，参会者只能看不能导出），scope 有也无效；bot 身份报 99991672（应用未申请scope）。绕不过，需 owner 开导出权限
+- **可用替代路径**：让用户在妙记页「导出为 docx」存到飞书文档，再 `lark-cli api GET /open-apis/docx/v1/documents/{doc_id}/raw_content` 拿全文（这个无权限墙）
+- 本机 HTTP_PROXY=127.0.0.1:62592 被注入，localhost 请求被劫持；agent-browser 前台命令一律 SIGTERM，只能 run_in_background 跑；无头模式飞书登录页渲染空白，有界面 --headed 也无窗口弹出 → 本机用 agent-browser 走飞书登录不可行
+
 ## 飞书项目角色机制（已验证的硬结论）
 - **角色槽位是实例级数据**：给工作项类型新增角色后，只对之后创建的实例生效，**不会回填存量实例**
 - 存量实例无该角色时：视图列显示「无效字段，不支持编辑」，详情页角色区整体不渲染（也就没有"添加角色"入口），后台详情页布局怎么改都无效

@@ -17,3 +17,8 @@ desktop.ini
 
 # 工具本地缓存
 .user_info/
+
+# agent-browser 调试日志与登录临时截图
+ab-*.log
+auth-qr.png
+browser-*.png
